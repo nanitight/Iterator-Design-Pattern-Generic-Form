@@ -1,0 +1,2 @@
+# Iterator-Design-Pattern-Generic-Form
+Testing out the iterator design pattern, but instead of specialising it to one type of object, it has been made generic and integrated it to work in unity together with monobehaviors, since generic classes can't be of monobehavior. 
