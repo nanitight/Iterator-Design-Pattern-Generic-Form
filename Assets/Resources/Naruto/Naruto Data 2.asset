@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Naruto Data 2
   m_EditorClassIdentifier: 
   fighterName: Kakashi Hatake
+  avatar: {fileID: 21300000, guid: 47ead773c048fe74e8dd19df98a0382d, type: 3}
   powerName: ' Raikiri '
   healthPoints: 11

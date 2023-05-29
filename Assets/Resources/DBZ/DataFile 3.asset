@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6940261bb871a4489af829658f2e01f, type: 3}
   m_Name: DataFile 3
   m_EditorClassIdentifier: 
+  fighterName: Bulma
+  avatar: {fileID: 21300000, guid: 763dcddf1af941a478d5b307f2e670a8, type: 3}
   healthPoints: 12
   attackPower: 3
-  fighterName: Gwen

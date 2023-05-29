@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6940261bb871a4489af829658f2e01f, type: 3}
   m_Name: DataFile
   m_EditorClassIdentifier: 
+  fighterName: Frieza Form 2
+  avatar: {fileID: 21300000, guid: ef5ee41e915894a4298af0e7d43316c9, type: 3}
   healthPoints: 16
   attackPower: 10
-  fighterName: Frieza Form 2

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6940261bb871a4489af829658f2e01f, type: 3}
   m_Name: DataFile 8
   m_EditorClassIdentifier: 
+  fighterName: Trunks
+  avatar: {fileID: 21300000, guid: 330d5f1029b9b484b9696dcaa5d1e1d4, type: 3}
   healthPoints: 15
   attackPower: 10
-  fighterName: Trunks

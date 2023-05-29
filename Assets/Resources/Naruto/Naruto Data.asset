@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Naruto Data
   m_EditorClassIdentifier: 
   fighterName: Shikamaru Nara
+  avatar: {fileID: 21300000, guid: 451cdf43a01ff6b48ac7855d2c88179d, type: 3}
   powerName: ' Shadow Imitation Jutsu'
   healthPoints: 9

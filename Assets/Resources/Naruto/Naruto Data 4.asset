@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Naruto Data 4
   m_EditorClassIdentifier: 
   fighterName: Tsunade Senju
+  avatar: {fileID: 21300000, guid: 2b4c72cd52724f24ab58eed434cf12e4, type: 3}
   powerName: 'Byakugou no Jutsu '
   healthPoints: 12

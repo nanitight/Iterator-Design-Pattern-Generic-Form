@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Naruto Data 6
   m_EditorClassIdentifier: 
   fighterName: Might Guy
+  avatar: {fileID: 21300000, guid: a325ddf7c61286e498fb5535296612a0, type: 3}
   powerName: 'Hirudora '
   healthPoints: 15

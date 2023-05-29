@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Naruto Data 8
   m_EditorClassIdentifier: 
   fighterName: Sasuke Uchiha
+  avatar: {fileID: 21300000, guid: 1bace3cdd682e0d4b8161d713ebece64, type: 3}
   powerName: 'Chidori '
   healthPoints: 17

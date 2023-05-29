@@ -9,5 +9,5 @@ using UnityEngine.UI;
 public class BaseFighter : ScriptableObject
 {
     public string fighterName;
-    [SerializeField] public GameObject avatar;
+    [SerializeField] public Sprite avatar;
 }

@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a6940261bb871a4489af829658f2e01f, type: 3}
   m_Name: DataFile 9
   m_EditorClassIdentifier: 
+  fighterName: Brolly
+  avatar: {fileID: 21300000, guid: d0797f45e8000c74a945818c3ab4ea84, type: 3}
   healthPoints: 16
   attackPower: 11
-  fighterName: Brolly

@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Naruto Data 1
   m_EditorClassIdentifier: 
   fighterName: Sakura Haruno
+  avatar: {fileID: 21300000, guid: b3123a341540b1149b329dd08b3fef6c, type: 3}
   powerName: ' Chakra Enhanced Strength '
   healthPoints: 10

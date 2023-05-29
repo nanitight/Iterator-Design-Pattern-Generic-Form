@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Naruto Data 7
   m_EditorClassIdentifier: 
   fighterName: Itachi Uchiha
+  avatar: {fileID: 21300000, guid: dde698cc1914c01468fc44ca7b38f9f5, type: 3}
   powerName: 'Tsukuyomi '
   healthPoints: 16

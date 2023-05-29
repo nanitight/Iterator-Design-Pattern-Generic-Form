@@ -12,7 +12,8 @@ public class GameRunner : MonoBehaviour
     private Aggregate<NarutoFighter> narutoFighters;
     private Iterator<NarutoFighter> narutoIterator;
 
-    public GameObject naruLogo, dbzLogo, defaultLogo, avatarImg;
+    public GameObject naruLogo, dbzLogo, defaultLogo;
+    public Image avatarImg;
     public TextMesh words, fighterName;
     
 
@@ -91,6 +92,7 @@ public class GameRunner : MonoBehaviour
 
     public void NextOnTheList()
     {
+        SwitchOffImage();
         switch(currentContext)
         {
             case context.Naru:
@@ -101,6 +103,7 @@ public class GameRunner : MonoBehaviour
                 break;
             default: break;
         }
+        
         //went over the top, so we take it one stepback
         if(currentFighter == null)
         {
@@ -110,6 +113,7 @@ public class GameRunner : MonoBehaviour
 
     public void PrevOnTheList()
     {
+        SwitchOffImage();
         switch (currentContext)
         {
             case context.Naru:
@@ -176,6 +180,18 @@ public class GameRunner : MonoBehaviour
         }
     }
 
+    private void ChangeImageMade(Sprite sprite)
+    {
+        if (sprite == null) return;
+        avatarImg.sprite = sprite;
+        avatarImg.enabled = true;
+    }
+
+    private void SwitchOffImage()
+    {
+        avatarImg.enabled = false;
+    }
+
     // Update is called once per frame
     void FixedUpdate()
     {
@@ -196,6 +212,15 @@ public class GameRunner : MonoBehaviour
             }
             words.text = currentFighter.ToString();
 
+            BaseFighter fighter = currentFighter as BaseFighter; 
+            if (fighter.avatar != null)
+            {
+                ChangeImageMade(fighter.avatar);
+            }
+            else
+            {
+                SwitchOffImage();
+            }
         }
     }
 }
