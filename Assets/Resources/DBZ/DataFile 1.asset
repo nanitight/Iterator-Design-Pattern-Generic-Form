@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: DataFile 1
   m_EditorClassIdentifier: 
   fighterName: Narrator
-  avatar: {fileID: 21300000, guid: a7250cfe243e78c4eaa1bf86e495d876, type: 3}
   healthPoints: 10
-  attackPower: 1
+  avatar: {fileID: 21300000, guid: a7250cfe243e78c4eaa1bf86e495d876, type: 3}
+  attackPower: 100

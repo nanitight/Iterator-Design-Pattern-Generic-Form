@@ -6,12 +6,15 @@ using UnityEngine;
 public class NarutoFighter : BaseFighter
 {
     public string powerName ;
-    public int healthPoints;
-
 
     public override string ToString()
     {
         string text = "My name is " + fighterName + ". My superpower is called " + powerName + ". To take me out you need a total attack of " + healthPoints + ".";
         return text;
+    }
+
+    public override int GetPowerValue()
+    {
+        return powerName.Length;
     }
 }

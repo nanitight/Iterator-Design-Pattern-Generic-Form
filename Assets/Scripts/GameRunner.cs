@@ -1,33 +1,41 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameRunner : MonoBehaviour
 {
-    private Aggregate<DBZFighter> dbzFighters;
+    private static Aggregate<DBZFighter> dbzFighters;
     private Iterator<DBZFighter> dbzIterator;
 
-    private Aggregate<NarutoFighter> narutoFighters;
+    private static Aggregate<NarutoFighter> narutoFighters;
     private Iterator<NarutoFighter> narutoIterator;
 
-    public GameObject naruLogo, dbzLogo, defaultLogo;
+    public GameObject naruLogo, dbzLogo, defaultLogo, confirm;
     public Image avatarImg;
-    public TextMesh words, fighterName;
-    
+    public TextMesh words;
+    public TextMeshPro fighterName;
+
 
     public enum context
     {
-        DBZ , Naru
+        DBZ, Naru
     };
     public context currentContext = context.DBZ;
     public Object currentFighter = null;
-    
+
+    [SerializeField] private Image[] selectedDBz, selectedNaruto; //just a reference to the gameobjects
+    public GameDependent betDependency;
+
     // Start is called before the first frame update
     void Start()
     {
         //Debug.Log("STARTED!");
+
+        betDependency = new GameDependent(selectedDBz, selectedNaruto);
 
         dbzFighters = new ConcreteAggregate<DBZFighter>();
         if (dbzFighters != null)
@@ -93,7 +101,7 @@ public class GameRunner : MonoBehaviour
     public void NextOnTheList()
     {
         SwitchOffImage();
-        switch(currentContext)
+        switch (currentContext)
         {
             case context.Naru:
                 currentFighter = narutoIterator.Next();
@@ -103,9 +111,9 @@ public class GameRunner : MonoBehaviour
                 break;
             default: break;
         }
-        
+
         //went over the top, so we take it one stepback
-        if(currentFighter == null)
+        if (currentFighter == null)
         {
             PrevOnTheList();
         }
@@ -174,7 +182,7 @@ public class GameRunner : MonoBehaviour
                 currentFighter = narutoIterator.CurrentItem;
                 break;
             case context.DBZ:
-                currentFighter= dbzIterator.CurrentItem;
+                currentFighter = dbzIterator.CurrentItem;
                 break;
             default: break;
         }
@@ -192,7 +200,42 @@ public class GameRunner : MonoBehaviour
         avatarImg.enabled = false;
     }
 
-    // Update is called once per frame
+    public void SelectCurrentFighter()
+    {
+        betDependency.AddFighterToContextList(currentContext, currentFighter as BaseFighter);
+    }
+
+    public void DeleteSelectectedPlayer(string delCode)
+    {
+        int contextSelected = int.Parse(delCode.Substring(0, 1));
+        int i = int.Parse(delCode.Substring(1, 1));
+
+        if (contextSelected == 0)
+        {
+            betDependency.DeleteSelectedFighter(new GameDependent.DeleteRequest(context.DBZ, i));
+        }
+        else if (contextSelected == 1)
+        {
+            betDependency.DeleteSelectedFighter(new GameDependent.DeleteRequest(context.Naru, i));
+        }
+    }
+
+    public static Aggregate<DBZFighter> GetDBZAggregate(){
+
+        return dbzFighters; 
+    }
+    public static Aggregate<NarutoFighter> GetNarutoAggregate() {  
+        return narutoFighters; 
+    }
+
+    public void LoadFightScene()
+    {
+        StateManager.userFighterSelection  = betDependency.GetUserSelection();
+        StateManager.depedency = betDependency; 
+        SceneManager.LoadScene("FightScene");
+        //Debug.Log("Before Scene Load: " + betDependency.GetUserSelection().ToString());
+    }
+
     void FixedUpdate()
     {
         if (currentFighter!= null)
@@ -222,5 +265,16 @@ public class GameRunner : MonoBehaviour
                 SwitchOffImage();
             }
         }
+
+        if(betDependency.EverythingFilled())
+        {
+            confirm.SetActive(true);
+        }
+        else
+        {
+            confirm.SetActive(false);
+        }
+
+
     }
 }
