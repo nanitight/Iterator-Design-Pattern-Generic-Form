@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    public float movementSpeed = 100;
+    public static float movementSpeed = 100;
     Rigidbody rb;
     // Start is called before the first frame update
     void Start()
@@ -24,10 +24,11 @@ public class PlayerMovement : MonoBehaviour
             //vector3.x += horizontal*Time.deltaTime* movementSpeed;
             //Vector3 vector3 = horizontal * movementSpeed * Time.deltaTime* transform.forward;
             //transform.Rotate(Vector3.up, horizontal * movementSpeed * Time.deltaTime); // = Vector3.MoveTowards(transform.position, vector3, Time.deltaTime);
-            Debug.Log("Horizontal");
+            //Debug.Log("Horizontal");
             Vector3 v3 = transform.rotation.eulerAngles; 
             v3.y += horizontal * movementSpeed * Time.deltaTime;
-            rb.MoveRotation(Quaternion.Euler(v3));
+            //rb.MoveRotation(Quaternion.Euler(v3));
+            transform.rotation = Quaternion.Euler(v3);
         }
 
 
