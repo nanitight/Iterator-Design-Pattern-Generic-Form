@@ -13,6 +13,7 @@ public class FighterPlayer : MonoBehaviour
     [SerializeField, RequiredMember] private GameObject explosionPrefab;
     [SerializeField, RequiredMember] private List<FighterPlayer> allFightersOpp;
     [SerializeField, RequiredMember] private List<Transform> allFighterOppsBestAttackPosition;
+    private int myself = -1; 
 
 
 
@@ -44,6 +45,11 @@ public class FighterPlayer : MonoBehaviour
             if (fightManager.fightStarted)
             {
                 ToggleObjectMovementComponent(true);
+                //tell manager if i am the only one surviving
+                if (LastManStanding())
+                {
+                    fightManager.LastManStanding(this);
+                }
             }
             else
             {
@@ -93,9 +99,22 @@ public class FighterPlayer : MonoBehaviour
         }
     }
 
+    private bool LastManStanding()
+    {
+        for(int i = 0; i < allFightersOpp.Count; i++)
+        {
+            if (allFightersOpp[i] != null)
+            {
+                return false;
+            }
+        }
+        OnDestroy();
+        return true; 
+    }
+
     public void SetAllFighterOpponents(List<FighterPlayer> allFighters)
     {
-        int myself = allFighters.FindIndex((x) => x == this);
+        myself = allFighters.FindIndex((x) => x == this);
         if (myself == -1)
         {
             Debug.LogError("You are not found!"); 

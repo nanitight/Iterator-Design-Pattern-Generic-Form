@@ -236,6 +236,11 @@ public class GameRunner : MonoBehaviour
         //Debug.Log("Before Scene Load: " + betDependency.GetUserSelection().ToString());
     }
 
+    public void CloseApp()
+    {
+        Application.Quit();
+    }
+
     void FixedUpdate()
     {
         if (currentFighter!= null)
